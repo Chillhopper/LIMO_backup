@@ -1,0 +1,14 @@
+<launch>
+    <!-- Launch emain.py in a new terminal -->
+    <node pkg="arena" type="xterm" name="emain_terminal" args="-e 'rosrun arena emain.py'"/>
+
+    <!-- Delay to ensure emain.py starts before egui.py and poseHub.py -->
+    <rosparam command="load" file="$(find arena)/config/delay.yaml"/>
+
+    <!-- Launch egui.py in a new terminal -->
+    <node pkg="arena" type="xterm" name="egui_terminal" args="-e 'rosrun arena egui.py'"/>
+
+    <!-- Launch poseHub.py in a new terminal -->
+    <node pkg="arena" type="xterm" name="poseHub_terminal" args="-e 'rosrun arena poseHub.py'"/>
+</launch>
+
